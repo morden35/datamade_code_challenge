@@ -21,17 +21,29 @@ submit_button.addEventListener("click", () => {
       if (response['status'] == 200) {
          response.json()
          .then(data => {
+            console.log(data);
             let addr_results_div = document.getElementById("address-results");
             
             // Show hidden html element
             addr_results_div.style.display = 'block';
 
-            // Append elements to html
             let addr_type_strong = document.getElementById("parse-type");
+            var comp_table_body = addr_results_div.children[2].children[1]
+
+            // Remove old text
+            if (addr_type_strong.textContent != "") { 
+               addr_type_strong.textContent = "";
+            }
+
+            // Remove old elements if exist
+            while (comp_table_body.firstChild) {
+               comp_table_body.removeChild(comp_table_body.firstChild);
+            }
+
+            // Append new elements to html
             let addr_type_text = document.createTextNode(data["address_type"]);
             addr_type_strong.appendChild(addr_type_text);
 
-            var comp_table_body = addr_results_div.children[2].children[1]
             for (const [key, value] of Object.entries(data["address_components"])) {
                let tr = document.createElement("tr");
                let th1 = document.createElement("th");
