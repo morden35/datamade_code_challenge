@@ -59,9 +59,15 @@ submit_button.addEventListener("click", () => {
             }
          })
       } else {
-         // Display error message
          let addr_results_div = document.getElementById("address-results");
          addr_results_div.style.display = 'block';
+
+         // Remove old elements if exist
+         while (addr_results_div.firstChild) {
+            addr_results_div.removeChild(addr_results_div.firstChild);
+         }
+
+         // Display error message
          let h3 = document.createElement("h3");
          let h3_text = document.createTextNode("Invalid address. Please try again with a valid address.");
          h3.appendChild(h3_text);
