@@ -46,14 +46,14 @@ submit_button.addEventListener("click", () => {
 
             for (const [key, value] of Object.entries(data["address_components"])) {
                let tr = document.createElement("tr");
-               let th1 = document.createElement("th");
-               let th2 = document.createElement("th");
+               let td1 = document.createElement("td");
+               let td2 = document.createElement("td");
                let addr_comp_type = document.createTextNode(key);
                let addr_comp_text = document.createTextNode(value);
-               th1.appendChild(addr_comp_type);
-               th2.appendChild(addr_comp_text);
-               tr.appendChild(th1);
-               tr.appendChild(th2);
+               td1.appendChild(addr_comp_type);
+               td2.appendChild(addr_comp_text);
+               tr.appendChild(td1);
+               tr.appendChild(td2);
 
                comp_table_body.appendChild(tr);
             }
